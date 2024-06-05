@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Papper Scissors</title>
+  </head>
+  <body>
+    <script>
+      console.log("Hello World");
+
+      function getComputerChoice() {
+        let randomNumber = Math.floor(Math.random() * 9);
+        let rockPapperScissor = "";
+
+        if (randomNumber < 3) {
+          rockPapperScissor = "Rock";
+        } else if (randomNumber < 6) {
+          rockPapperScissor = "Papper";
+        } else {
+          rockPapperScissor = "Scissors";
+        }
+        return rockPapperScissor;
+      }
+
+
+      function getHumanChoice(){
+        let choice = prompt("Escriba si usa piedra, papel o tijera")
+        return choice;
+      }
+
+      const HUMANSCORE = 0;
+      const COMPUTERSCORE = 0;
+
+      function playRound(humanChoice, computerChoice){
+        //TODO: Make your function’s humanChoice parameter case-insensitive so that players can input “rock”, “ROCK”, “RocK”, or other variations. 
+        //TODO: Write the code for your playRound function to console.log a string value representing the round winner, such as: “You lose! Paper beats Rock”.
+        //TODO: Increment the humanScore or computerScore variable based on the round winner.
+      }
+
+    </script>
+  </body>
+</html>
