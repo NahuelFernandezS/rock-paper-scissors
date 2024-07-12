@@ -1,0 +1,61 @@
+body{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+#section_playGame{
+    width: 100vw;
+    height: 100vh;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    cursor: pointer;
+    width: 150px;
+    height: 45px;
+    border-radius: 8px;
+    background-color: cadetblue;
+    border-color: transparent;
+}
+
+#btn_piedra:hover{
+    transition: all 1s ease-out;
+    background-color: brown;
+    color: bisque;
+    font-size: medium;
+}
+
+#btn_papel:hover{
+    transition: all 1s ease-out;
+    background-color: white;
+    color: black;
+    font-size: medium;
+}
+
+#btn_tijera:hover{
+    transition: all 1s ease-out;
+    background-color: rgba(191, 211, 7, 0.685);
+    color: rgb(12, 46, 236);
+    font-size: medium;
+}
+
+#content_result{
+    width: 300px;
+    padding-top: 30px;
+}
+
+#btn_reset{
+    width: 100px;
+    height: 35px;
+    background-color: red;
+}

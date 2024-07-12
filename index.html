@@ -4,10 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Papper Scissors</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <section id="section_playGame">
+      <div id="content">
+        <div>
+          <button id="btn_piedra">Piedra</button>
+          <button id="btn_papel">Papel</button>
+          <button id="btn_tijera">Tijera</button>
+          <button id="btn_reset">Reset Game</button>
+        </div>
+        <div id="content_result">Resultado: <span id="winner"></span></div>
+      </div>
+    </section>
+
     <script>
       console.log("Hello World");
+
+      const papel = document.getElementById("btn_papel");
+      const piedra = document.getElementById("btn_piedra");
+      const tijera = document.getElementById("btn_tijera");
+      const reset = document.getElementById("btn_reset");
+
+      papel.addEventListener("click", function () {
+        playRound("papper", getComputerChoice());
+      });
+
+      piedra.addEventListener("click", function () {
+        playRound("rock", getComputerChoice());
+      });
+
+      tijera.addEventListener("click", function () {
+        playRound("scissors", getComputerChoice());
+      });
 
       function getComputerChoice() {
         let randomNumber = Math.floor(Math.random() * 9);
@@ -30,66 +60,61 @@
 
       const HUMANSCORE = 0;
       const COMPUTERSCORE = 0;
-
+      let count = 1;
+        let humanScore = 0;
+        let computerScore = 0;
       function playRound(humanChoice, computerChoice) {
         //TODO: Make your function’s humanChoice parameter case-insensitive so that players can input “rock”, “ROCK”, “RocK”, or other variations.
         //TODO: Write the code for your playRound function to console.log a string value representing the round winner, such as: “You lose! Paper beats Rock”.
         //TODO: Increment the humanScore or computerScore variable based on the round winner.
+        console.log(computerChoice)
         let _humanChoice = humanChoice.toLowerCase().trim();
-        const _scissors = "You lose! Scissors beats Papper";
-        const _rock = "You lose! Rock beats Scissors";
-        const _papper = "You lose! Papper beats Rock";
-        const humanWin = "humanWin";
-        const computerWin = "computerWin";
+        const humanWin = "Gano el Humano con " + humanScore + " puntos";
+        const computerWin = "Gano la Maquina con " + computerScore + " puntos";
+        const winner = document.getElementById("winner");
 
-        if (_humanChoice === "rock" && computerChoice === "Scissors") {
-          return humanWin;
-        } else if (_humanChoice === "scissors" && computerChoice === "Rock") {
-          return computerWin;
-        } else if (_humanChoice === "scissors" && computerChoice === "Papper") {
-          return humanWin;
-        } else if (_humanChoice === "papper" && computerChoice === "Scissors") {
-          return computerWin;
-        } else if (_humanChoice === "papper" && computerChoice === "Rock") {
-          return humanWin;
-        } else if (_humanChoice === "rock" && computerChoice === "Papper") {
-          return computerWin;
-        } else {
-          return "Empate";
-        }
-      }
-
-      function playGame() {
-        let count = 1;
-        let humanScore = 0;
-        let computerScore = 0;
-
-        while (count < 6) {
-          let humanSelection = getHumanChoice();
-          let computerSelection = getComputerChoice();
-
-          let whoWins = playRound(humanSelection, computerSelection);
-
-          if (whoWins === "humanWin") {
+        if (count < 6) {
+          count++;
+          if (_humanChoice === "rock" && computerChoice === "Scissors") {
             humanScore++;
-          } else if (whoWins === "computerWin") {
+          } else if (_humanChoice === "scissors" && computerChoice === "Rock") {
+            computerScore++;
+          } else if (
+            _humanChoice === "scissors" &&
+            computerChoice === "Papper"
+          ) {
+            humanScore++;
+          } else if (
+            _humanChoice === "papper" &&
+            computerChoice === "Scissors"
+          ) {
+            computerScore++;
+          } else if (_humanChoice === "papper" && computerChoice === "Rock") {
+            humanScore++;
+          } else if (_humanChoice === "rock" && computerChoice === "Papper") {
             computerScore++;
           } else {
-            console.log('..');
+            console.log("..");
           }
-          count++;
-        }
-
-        if (humanScore > computerScore) {
-          console.log("Gano el humano ", humanScore);
-        } else if (humanScore === computerScore) {
-          console.log("Empate");
         } else {
-          console.log('Gano la maquina ', computerScore)
+          console.log(humanScore)
+          console.log(computerScore, " <-")
+          if (humanScore > computerScore) {
+            winner.innerHTML = humanWin;
+          } else if (humanScore === computerScore) {
+            winner.innerHTML = "Empate";
+          } else {
+            winner.innerHTML = computerWin;
+          }
         }
       }
+     reset.addEventListener("click", function(){
+      count = 1;
+      humanScore = 0;
+      computerScore = 0;
+      winner.innerHTML = "";
+     });
 
-      playGame();
     </script>
   </body>
 </html>
